@@ -26,3 +26,10 @@ let file_data = `{"name":"Allan Jeremy","age":23}`;
 let file_err = fs.writeFileSync("testfile.json",file_data);
 
 console.log(`File error in sync: ${file_err}`);
+
+//Watch files
+const watcher = fs.watch("./");
+
+watcher.on("change",(event,filename)=>{
+    console.log(`Event: ${event} on ${filename}`);
+});
